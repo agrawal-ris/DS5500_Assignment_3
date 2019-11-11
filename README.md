@@ -63,7 +63,7 @@ plt.xlabel("Total Federal Revenue")
 
 
 
-![png](/images/output_6_1.png)
+![png](/Images/output_6_1.png)
 
 
 
@@ -84,7 +84,7 @@ plt.xlabel("Total Federal Revenue")
 
 
 
-![png](/images/output_7_1.png)
+![png](/Images/output_7_1.png)
 
 
 We can see that the state taking the most federal funding is California, followed by Texas and New York.
@@ -108,7 +108,7 @@ plt.xlabel("Federal Revenue per Student")
 
 
 
-![png](/images/output_9_1.png)
+![png](/Images/output_9_1.png)
 
 
 The states spending the most federal funding per student is District of Columbia followed by Alaska and Louisiana.
@@ -137,7 +137,7 @@ plt.xlabel("Revenue")
 
 
 
-![png](/images/output_13_1.png)
+![png](/Images/output_13_1.png)
 
 
 
@@ -157,7 +157,7 @@ plt.xlabel("Revenue")
 
 
 
-![png](/images/output_14_1.png)
+![png](/Images/output_14_1.png)
 
 
 
@@ -189,7 +189,7 @@ plt.xlabel("Debt per Student")
 
 
 
-![png](/images/output_18_1.png)
+![png](/Images/output_18_1.png)
 
 
 
@@ -499,7 +499,7 @@ plt.ylabel("Count of Schools")
 
 
 
-![png](/images/output_25_1.png)
+![png](/Images/output_25_1.png)
 
 
 Here i used a function that takes a column as a input and returns an unblurred version of it. 
