@@ -201,7 +201,19 @@ dS
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -521,12 +533,19 @@ print("Total amount left for the new Budget = ", 0.85 * totalFed)
 def makeEqualBudget(df, cutPercent, total):
     amountCut = (cutPercent/100) * total
     ans = [0]*len(df)
+    newsum = 0
+    for i in range(len(df)):
+        if (df['AmountLeft'][i]  > 0):
+            newsum += i
+    cutPercent = amountCut/newsum
+    
     for i in range(len(df)):
         if (amountCut == 0):
             break
         if (df['AmountLeft'][i] > 0):
-            ans[i] = min(df['TFEDREV'][i], amountCut)
-            amountCut -= ans[i]
+            ans[i] = cutPercent * df['TFEDREV'][i]
+            amountCut -= ans[i] 
+    
     for i in range(len(df)):
         if (amountCut == 0):
             break
@@ -558,7 +577,19 @@ p41.head(25)
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -753,5 +784,8 @@ p41.head(25)
 
 # Problem 5
 
-For selecting which schools budget to cut what I did initially is found out which of those had excess funds left from their revenue. What I mean to say is the schools which have some amount left over even after all the total expenditures they do. So we cut the amount left over from their federal budget first from all the schools. Then if there is still amount left then we go on to cut 15% from all the schools equally because that seems like the logical and fair thing to do at this point. This way no school will have a large change in their federal revenue and it would be fair to every school.
-But what I found out is the quota of 15% budget cut was met just by taking amount from the schools which had excess amount left. So in short no schools with already less budget had amount cut from them. So this seems like a win - win situation to me, because we only took budget from schools having excess thus not affecting those already struggling.
+For selecting which schools budget to cut what I did initially is found out which of those had excess funds left from their revenue. What I mean to say is the schools which have some amount left over even after all the total expenditures they do. So we cut the amount left over * newProportion from their federal budget first from all the schools.
+The new proportion is the proportion of money left after we divide the required amount from the sum of amount left after expending money for each school separately.
+Then we use this newProportion and subtract this much percentage from each schools excess funds to get the result. This just seems fair to do.
+Then if there is still amount left then we go on to cut newProportion% from all the schools which have negative amount left because that seems like the logical and fair thing to do at this point. This way no school will have a large change in their federal revenue and it would be fair to every school.
+But what I found out is the quota of newProportion% budget cut was met just by taking amount from the schools which had excess amount left. So in short no schools with already less budget had amount cut from them. So this seems like a win - win situation to me, because we only took budget from schools having excess thus not affecting those already struggling.
